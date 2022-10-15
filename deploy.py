@@ -75,16 +75,6 @@ def filter_text(region, ocr_result, region_threshold):
 
 def main_detect(img_path=None, vid_path=None,vid_out = None):
 
-    print(f"[INFO] Loading model... ")
-    ## loading the custom trained model
-    # model =  torch.hub.load('ultralytics/yolov5', 'custom', path='last.pt',force_reload=True) ## if you want to download the git repo and then run the detection
-    model =  torch.hub.load('./yolov5-master', 'custom', source ='local', path='ALPR_best.pt',force_reload=True) ### The repo is stored locally
-
-    classes = model.names ### class names in string format
-
-
-
-
     ### --------------- for detection on image --------------------
     if img_path != None:
         print(f"[INFO] Working with image: {img_path}")
@@ -96,6 +86,11 @@ def main_detect(img_path=None, vid_path=None,vid_out = None):
         results = detectx(frame, model = model) ### DETECTION HAPPENING HERE    
 
 
+print(f"[INFO] Loading model... ")
+## loading the custom trained model
+model =  torch.hub.load('ultralytics/yolov5', 'custom', path='ALPR_best.pt',force_reload=True) ## if you want to download the git repo and then run the detection
+# model =  torch.hub.load('./yolov5-master', 'custom', source ='local', path='ALPR_best.pt',force_reload=True) ### The repo is stored locally
+classes = model.names ### class names in string format
 
 ### -------------------  calling the main function-------------------------------
 # main(vid_path="./test_images/video.mp4",vid_out="vid_1.mp4") ### for custom video
