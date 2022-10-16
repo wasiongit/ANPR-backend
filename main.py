@@ -8,7 +8,7 @@ import easyocr
 
 
 def main():
-    main_detect('ANPR 2.png')
+    main_detect('ANPR 2.PNG')
     img = cv2.imread('output0.png')
     corrected_img = deskew(img)
     corrected_img=cv2.cvtColor(corrected_img,cv2.COLOR_RGB2GRAY)
